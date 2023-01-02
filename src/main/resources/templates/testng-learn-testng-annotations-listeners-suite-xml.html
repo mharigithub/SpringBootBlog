@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout}">
+
+<head>
+	<!--utf-8 denotes the type of chars we are using on the website-->
+	<meta charset="UTF-8" />
+	<!--below description meta will be picked by SEO with maximum of 160 chars-->
+	<meta name="description" content="Learn TestNG annotations, listeners, TestNG xml file, Parallel testing using TestNG" />
+	<!--og:title meta is used to control how webpage is displayed when shared via social media-->
+	<meta name="og:title" property="og:title" content="TestNG tutorial for Automation Testing using Selenium and Appium" />
+	<!--viewport is to make website responsive-->
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<!--keywords is optional since google and major SEO doesnt use it-->
+	<meta name="keywords"
+		content="testng, testng xml, parallel testing, testng annotations, testng suite, testng listener" />
+	<!--author meta is not related to SEO-->
+	<meta name="author" content="hari" />
+	<!--title tag is used by SEO, recommended to put under 70 characters-->
+	<title>TestNG tutorial for Automation Testing using Selenium and Appium</title>
+	<!-- Bootstrap core CSS -->
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.min.css}">
+	<!-- Custom styles for this template -->
+	<link th:rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<article layout:fragment="main-content">
+	<h1>TestNG</h1>
+	<h2>Important points:</h2>
+	<p>Read testng xml value at runtime:
+	<pre>
+		<code>Reporter.getCurrentTestResult().getTestContext().getCurrentXMLTest().getParameter("parametervalue");</code>
+	</pre>
+	</p>
+</article>
+
+</html>

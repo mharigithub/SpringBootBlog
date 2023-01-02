@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)https://getbootstrap.com/docs/4.0/examples/cover/ -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+	<!--utf-8 denotes the type of chars we are using on the website-->
+	<meta charset="UTF-8" />
+	<!--below description meta will be picked by SEO with maximum of 160 chars-->
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<!-- Bootstrap core CSS -->
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.min.css}">
+	<!-- Custom styles for this template -->
+	<link th:rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+	<header>
+		<nav class="navbar navbar-expand-sm fixed-top navbar-dark bg-dark container-fluid">
+			<a class="navbar-brand" href="/">BinaryDigitWorld.com</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+				aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNavDropdown">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" aria-current="page" href="/">Home</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false">
+							Selenium
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<li><a class="dropdown-item"
+									href="/interview-questions-on-selenium-cucumber-java-appium-jenkins-testng">Interview
+									Questions</a></li>
+							<li><a class="dropdown-item" href="#">Selenium</a></li>
+							<li><a class="dropdown-item"
+									href="/testng-learn-testng-annotations-listeners-suite-xml">TestNG</a></li>
+							<li><a class="dropdown-item" href="#">Cucumber</a></li>
+							<li><a class="dropdown-item"
+									href="/xpath-write-xpath-using-or-and-startswith-endswith-and-dynamic-xpath">Xpath</a>
+							</li>
+							<li><a class="dropdown-item" href="#">Page Object Model</a></li>
+							<li><a class="dropdown-item"
+									href="/appium-mobile-automation-testing-for-both-ios-and-android">Appium</a></li>
+							<li><a class="dropdown-item"
+									href="/java-programs-string-reverse-array-searching-sorting-merge-sort">Java</a>
+							</li>
+							<li><a class="dropdown-item"
+									href="/git-tutorial-git-add-git-commit-git-push-git-rebase-git-stash">Git</a></li>
+							<li><a class="dropdown-item" href="#">Jenkins</a></li>
+							<li><a class="dropdown-item" href="#">Jira Integration</a></li>
+						</ul>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false">
+							LifeStyle
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<li><a class="dropdown-item" href="#">Diet</a></li>
+							<li><a class="dropdown-item" href="#">Exercise</a></li>
+							<li><a class="dropdown-item" href="#">Personal Finance</a></li>
+						</ul>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Books</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<br>
+		<br>
+	</header>
+	<main role="main" layout:fragment="main-content">
+	</main>
+	<br>
+	<footer class="footer py-1 bg-dark fixed-bottom">
+		<p class="text-muted">All rights reserved. <strong>BinaryDigitWorld.com</strong></p>
+	</footer>
+	<script th:src="@{/webjars/bootstrap/5.1.3/js/bootstrap.bundle.js}"></script>
+</body>
+
+</html>

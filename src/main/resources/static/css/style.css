@@ -1,0 +1,72 @@
+pre {
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    border-left: 3px solid #f36d33;
+    color: #666;
+    page-break-inside: avoid;
+    font-family: monospace;
+    margin-bottom: 1.6em;
+    max-width: 100%;
+    overflow: auto;
+    padding: 1em 1.5em;
+    display: block;
+    word-wrap: break-word;
+}
+h1 {
+	color:grey;
+	text-align:center;	
+}
+h2,h5 {
+	color:#505050;
+}
+footer {
+	text-align:center;
+}
+body {
+  margin: 15px;
+}
+h5 {
+	text-indent: 10px;
+}
+p,ul {
+	text-indent: 30px;
+}
+li {
+	text-indent: 40px;
+}
+.navbar.navbar-expand-sm.navbar-dark.bg-dark.container-fluid div ul li a{
+	color:#F5F5F5;
+}
+.navbar.navbar-expand-sm.navbar-dark.bg-dark.container-fluid div ul li ul li a{
+	color:#101010;
+}
+.navbar.navbar-expand-sm.navbar-dark.bg-dark.container-fluid div ul li ul li{
+	text-indent: 5px;
+}
+
+.navbar-brand{
+	font-weight: bold;
+	font-size: 150%;
+}
+.dropdown:hover .dropdown-menu {
+	display: block;
+}
+.dropdown-menu {
+	margin-top: 0;
+}
+.pre-scrollable {
+    max-height: 340px;
+    overflow-y: scroll;
+}
+.col-centered {
+	float: none;
+	margin: 0 auto;
+}
+.cover-heading {
+	text-align:center;
+	color:#101010;
+}
+.lead {
+	text-indent: 30px;
+	color:#101010;
+}

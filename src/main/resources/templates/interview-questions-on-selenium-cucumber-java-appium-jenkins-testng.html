@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout}">
+
+<head>
+	<!--utf-8 denotes the type of chars we are using on the website-->
+	<meta charset="UTF-8" />
+	<!--below description meta will be picked by SEO with maximum of 160 chars-->
+	<meta name="description"
+		content="Automation Testing Interview Questions on Selenium, Appium, Cucumber, TestNG, Java, Jenkins, Git, Jira, Parallel Testing etc" />
+	<!--og:title meta is used to control how webpage is displayed when shared via social media-->
+	<meta name="og:title" property="og:title"
+		content="Selenium Interview Questions | Automation Testing, Cucumber, TestNG, Java" />
+	<!--viewport is to make website responsive-->
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<!--keywords is optional since google and major SEO doesnt use it-->
+	<meta name="keywords" content="selenium, java, testng, cucumber, automation testing, appium, tutorial" />
+	<!--author meta is not related to SEO-->
+	<meta name="author" content="hari" />
+	<!--title tag is used by SEO, recommended to put under 70 characters-->
+	<title>Selenium Interview Questions | Automation Testing, Cucumber, TestNG, Java</title>
+	<!-- Bootstrap core CSS -->
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.min.css}">
+	<!-- Custom styles for this template -->
+	<link th:rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<article layout:fragment="main-content">
+	<!--h1 tag will be used by SEO, even h2 to h6 will also be used-->
+	<h1>Automation Testing Interview Questions</h1>
+	<h2>Selenium Interview Questions</h2>
+	<h5>Q) What are the different element locators in selenium?</h5>
+	<p>A) Xpath, Name, Id, Linktext etc. Xpath is widely used.</p>
+	<h5>Q) How to instantiate a Webdriver?</h5>
+	<p>
+	<pre class="pre-scrollable col-10 col-centered"><code>WebDriver driver;
+System.setProperty("webdriver.chrome.driver", "path of chromedriver.exe file");
+driver = new ChromeDriver();</code></pre>
+	</p>
+	<h5>Q) How to maximize browser window?</h5>
+	<p>
+	<pre class="pre-scrollable col-10 col-centered"><code>driver.manage().window().maximize();</code></pre>
+	</p>
+	<h5>Q) What are different waits in Selenium? - Synchronization</h5>
+	<p>Implicit wait:
+	<pre class="pre-scrollable col-10 col-centered"><code>driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);</code></pre>
+	</p>
+	<p>Explicit wait:
+	<pre class="pre-scrollable col-10 col-centered"><code>WebDriverWait wait = new WebDriverWait(driver, 30);
+WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.id("some id")));</code></pre>
+	</p>
+	<p>Fluent wait:
+	<pre class="pre-scrollable col-10 col-centered"><code>Wait wait = new
+FluentWait&ltWebDriver>(driver).withTimeout(50,TimeUnit.SECONDS).pollingEvery(3,TimeUnit.SECONDS).ignoring(NoSuchElementException.class);
+WebElement element = wait.until(new Function&ltWebDriver, WebElement>() {
+public WebElement apply(WebDriver driver) {
+return driver.findElement(By.id("some id"));
+}
+});</code>
+	</pre>
+	</p>
+	<p>Page load timeout:
+	<pre class="pre-scrollable col-10 col-centered"><code>driver.manage().timeouts().pageLoadTimeout(30,TimeUnit.SECONDS);</code></pre>
+	</p>
+	<h5>Q) How do you hover over an element and then click on it?</h5>
+	<p>A) Using "Actions" class
+	<pre class="pre-scrollable col-10 col-centered"><code>Actions action = new Actions(driver);
+action.moveToElement(mainElement).moveToElement(subElement).click().build().perform();</code></pre>
+	</p>
+	<h5>Q) How to click on a dropdown?</h5>
+	<p>A) Using "Select" class.
+	<pre class="pre-scrollable col-10 col-centered"><code>WebElement webElement =
+driver.findElement(By.xpath("//*[@label="Electronics"]")));
+Select dropdown = new Select(webElement);
+dropdown.selectByVisibleText("Laptop");</code></pre>
+	</p>
+	<h5>Q) How to switch windows using selenium?</h5>
+	<p>A) Using window handles
+	<pre class="pre-scrollable col-10 col-centered"><code>for(String handle : driver.getWindowHandles()){
+driver.switchTo().window(handle);
+}</code></pre>
+	</p>
+	<h5>Q) How to handle StaleElementReferenceException?</h5>
+	<p>A)
+	<pre class="pre-scrollable col-10 col-centered"><code>try {
+element.click();
+}
+catch(StaleElementReferenceException e){
+element = driver.findElement(By.xpath("//*[@label="Electronics"]"));
+element.click();
+}</code></pre>
+	</p>
+	<h5>Q) What are the different exceptions encountered in selenium?</h5>
+	<p>A) Below are the most common exceptions</p>
+	<ul class="list-unstyled">
+		<li>StaleElementReferenceException (when element becomes stale during navigating back and forth)</li>
+		<li>NoSuchElementException (when element is not found)</li>
+		<li>ElementNotVisibleException (when element is not loaded or when multiple elements are fetched)</li>
+		<li>ElementNotSelectableException (when element is disabled)</li>
+		<li>TimeoutException</li>
+	</ul>
+	<h5>Q) What is RemoteWebDriver</h5>
+	<p>A) For running tests on local devices WebDriver is used. But to run tests on cloud devices
+		RemoteWebDriver is used.
+	</p>
+	<h2>TestNG Interview Questions</h2>
+	<h5>Q) What are testNG annotations?</h5>
+	<p>A) Annotations in testNG:
+	<ul class="list-unstyled">
+		<li>@BeforeSuite</li>
+		<li>@BeforeTest</li>
+		<li>@BeforeClass</li>
+		<li>@BeforeMethod</li>
+		<li>@Test</li>
+		<li>@AfterMethod</li>
+		<li>@AfterClass</li>
+		<li>@AfterTest</li>
+		<li>@AfterSuite</li>
+	</ul>
+	</p>
+	<h5>Q) What are the different methods in ITestListener</h5>
+	<p>A) Methods in ITestListener:
+	<ul class="list-unstyled">
+		<li>onStart()</li>
+		<li>onTestSuccess()</li>
+		<li>onTestFailure()</li>
+		<li>onTestSkipped()</li>
+		<li>onTestFailedButWithinSuccessPercentage()</li>
+		<li>onFinish()</li>
+	</ul>
+	</p>
+	<h2>Cucumber Interview Questions</h2>
+	<h5>Q) What are the different gherkin keywords required to write a BDD scenario?</h5>
+	<p>A) Given, When, And, Then are most commonly used gherkin keywords
+	<pre class="pre-scrollable col-10 col-centered"><code>@tag1
+Feature: Home page buttons
+
+@tag2
+Scenario Outline: Validate home page buttons
+Given the user is on home page
+When user clicks on Categories dropdown
+Then all <categories> should be displayed
+	Examples:
+	|categories|
+	|Mobiles |
+	|Laptops |</code></pre>
+	</p>
+	<h5>Q) What is a Runner class?</h5>
+	<p>A) It's a glue between Feature files and stepdefinition files</p>
+	<h2>Appium Interview Questions</h2>
+	<p>Q) How to swipe using Appium?</p>
+	<p>A)
+	<pre class="pre-scrollable col-10 col-centered"><code>MobileElement element1 =
+driver.findElement(By.xpath("//*[@text='Mobile']"));
+MobileElement element2 = driver.findElement(By.xpath("//*[@text='Laptop']"));
+TouchActions touchActions = new TouchActions(driver);
+touchActions.press(element1).moveTo(element2).release().perform();</code></pre>
+	</p>
+	<h2>Adhoc Automation Interview Questions.</h2>
+	<h5>Q) What is pom.xml file</h5>
+	<p>A) It's used to add the dependencies to the framework and also different maven profiles can be
+		added.</p>
+	<h5>Q) What are extent reports</h5>
+	<p>A) It's html test report framework</p>
+	<h2>Java Interview Questions</h2>
+	<h5>Q) How to reverse a string in java?</h5>
+	<p>A)
+	<pre class="pre-scrollable col-10 col-centered"><code>InputStreamReader isr = new InputStreamReader(System.in);
+System.out.println("enter string: ");
+BufferedReader br = new BufferedReader(isr);
+String str = br.readLine();
+char c[] = str.toCharArray();
+int begin = 0, end = c.length - 1;
+while (end > begin) {
+char temp = c[end];
+c[end] = c[begin];
+c[begin] = temp;
+end--;
+begin++;
+}
+System.out.println("reversed string: " + c);</code></pre>
+	</p>
+	<h5>Q) How to reverse a number in java?</h5>
+	<p>A)
+	<pre class="pre-scrollable col-10 col-centered"><code>int n = 1234, reversedNum = 0;
+while (n != 0) {
+reversedNum = reversedNum * 10 + n % 10;
+n = n / 10;
+}
+System.out.println(reversedNum);</code></pre>
+	</p>
+	<h5>Q) Find whether the given number is prime or not in java</h5>
+	<p>A)
+	<pre class="pre-scrollable col-10 col-centered"><code> InputStreamReader isr = new InputStreamReader(System.in);
+BufferedReader br = new BufferedReader(isr);
+System.out.println("enter any number");
+int n = Integer.parseInt(br.readLine());
+boolean isprime = true;
+if (n == 1 || n == 0)
+isprime = false;
+// when we input 2 or 3 it will not go to below for loop as isprime is
+// already set to true it will print prime
+for (int i = 2; i &lt n; i++) {
+if (n % i == 0) {
+isprime = false;
+break;
+}
+}
+if (isprime) System.out.println("prime");
+else System.out.println("not prime");</code>
+	</pre>
+	</p>
+	<h5>Q) How to find repeated words count in java?</h5>
+	<p>A)
+	<pre class="pre-scrollable col-10 col-centered"><code> //input String
+String input = "Java is widely used in building web application and mobile application";
+//split the words from String
+String[] words = input.split(" ");
+//variable for getting repeated word count
+int wc = 1;
+//outer loop for comparison
+for (int i = 0; i &lt words.length; i++) {
+//inner loop for comparison
+for (int j = i + 1; j &lt words.length; j++) {
+//checking if both strings are equal
+if (words[i].equals(words[j])) {
+//if equal then increment the count
+wc = wc + 1;
+//replace repeated words by zero
+words[j] = "0";
+}
+}
+if (words[i] != "0")
+//printing the word along with count
+if (wc > 1)
+System.out.println("the word " + "'" + words[i] + "'" + " is repeated " + wc + " times");
+wc = 1;
+}</code></pre>
+	</p>
+	<h5>Q) How to find repeated characters in a string using java?</h5>
+	<p>A)
+	<pre class="pre-scrollable col-10 col-centered"><code>String str = "java";
+//initially below hashmap is empty
+Map&ltCharacter, Integer&gt map = new HashMap&ltCharacter, Integer&gt();
+char[] charArray = str.toCharArray();
+for (Character ch : charArray) {
+if (map.containsKey(ch)) {
+/*if the character is already present in hashmap then incrementing its value by one.
+(initially hashmap will be empty. so, it will not come to this if condition.)*/
+map.put(ch, map.get(ch) + 1);
+} else {
+//adding char to hashmap if it doesn't exist already
+map.put(ch, 1);
+}
+}
+Set&ltCharacter&gt keys = map.keySet();
+for (Character ch : keys) {
+if (map.get(ch) &gt 1) {
+System.out.println(ch + " is repeated " + map.get(ch) + " times");
+}
+}</code></pre>
+	</p>
+	<h5>Q) How to remove special characters in a string using java?</h5>
+	<p>A)
+	<pre class="pre-scrollable col-10 col-centered"><code>String s = "%$#ab^$c%";
+s = s.replaceAll("[^a-zA-Z0-9]", "");
+System.out.println(s);</code></pre>
+	</p>
+	<h5>Q) Find factorial of a number using java?</h5>
+	<p>A)
+	<pre class="pre-scrollable col-10 col-centered"><code>InputStreamReader isr = new InputStreamReader(System.in);
+BufferedReader br = new BufferedReader(isr);
+System.out.println("enter any number");
+int n = Integer.parseInt(br.readLine());
+int fact = 1;
+for (int i = 1; i <= n; i++) { fact=fact * i; } System.out.println(fact);</code>
+	</pre>
+	</p>
+	<h5>Q) Print fibonacci series of 5 numbers using java?</h5>
+	<p>A)
+	<pre class="pre-scrollable col-10 col-centered"><code>int n1 = 0, n2 = 1, n3, numbers=5;
+for (int i = 0; i < numbers; i++) { n3=n1 + n2; System.out.println(n3); n1=n2; n2=n3; } }</code>
+	</pre>
+	</p>
+	<h5>Q) Java program showing substring method usage</h5>
+	<p>A)
+	<pre class="pre-scrollable col-10 col-centered"><code> String main_string = "Python 3.0";
+String word = "Tutorial";
+System.out.println(main_string.substring(0, 7) + word + main_string.substring(6));</code></pre>
+	</p>
+</article>
+
+</html>

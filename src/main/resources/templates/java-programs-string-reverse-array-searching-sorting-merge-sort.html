@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout}">
+
+<head>
+	<!--utf-8 denotes the type of chars we are using on the website-->
+	<meta charset="UTF-8" />
+	<!--below description meta will be picked by SEO with maximum of 160 chars-->
+	<meta name="description"
+		content="Java concepts and Java programs for cracking interviews. Programs on String reverse, Count dublicate words, Searching, Sorting etc" />
+	<!--og:title meta is used to control how webpage is displayed when shared via social media-->
+	<meta name="og:title" property="og:title"
+		content="Java Programs | Algorithms for cracking automation testing interviews." />
+	<!--viewport is to make website responsive-->
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<!--keywords is optional since google and major SEO doesnt use it-->
+	<meta name="keywords" content="java, concepts, algorithms, programs" />
+	<!--author meta is not related to SEO-->
+	<meta name="author" content="hari" />
+	<!--title tag is used by SEO, recommended to put under 70 characters-->
+	<title>Java Concepts and Programs | For cracking automation testing interviews.</title>
+	<!-- Bootstrap core CSS -->
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.min.css}">
+	<!-- Custom styles for this template -->
+	<link th:rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<article layout:fragment="main-content">
+	<h1>Java</h1>
+	<h2>ThreadLocal</h2>
+	<p>It's recommended to define thread local instances as <mark>private</mark> and <mark>static</mark>. Thread local
+		is used when we can't afford any memory leaks and at the same time these thread local instances should be
+		working in parallel with their corresponding unique copy of data.</p>
+	<pre class="pre-scrollable col-10 col-centered"><code>private static final ThreadLocal&ltWebDriver>
+driverThreadLocal = new ThreadLocal&lt>();</code></pre>
+	<p>We can use get and set methods as follows</p>
+	<p>Since we are using static, we need to make sure we use <mark>synchronized</mark> keyword before the get and set
+		methods.</p>
+	<pre class="pre-scrollable col-10 col-centered"><code>private static final ThreadLocal&ltWebDriver>
+driverThreadLocal = new ThreadLocal&lt>();
+
+//here we need to pass driver while calling this method. e.g. new ChromeDriver()
+public static synchronized void setThreadLocalDriverInstance(WebDriver driver){
+driverThreadLocal.set(driver);
+}
+
+public static synchronized WebDriver getsetThreadLocalDriverInstance(){
+return driverThreadLocal.get();
+}</code></pre>
+	<p>We can choose to use directly the instance as follows without using get and set methods</p>
+	<pre class="pre-scrollable col-10 col-centered"><code>private static final ThreadLocal&ltWebDriver>
+driverThreadLocal = new ThreadLocal&lt>();
+WebDriver driver = new ChromeDriver();
+driverThreadLocal.set(driver)</code></pre>
+	<h2>Composition vs Inheritance</h2>
+	<p>Inheritance: It is extending a class using <mark>Extends</mark> keyword</p>
+	<p>Composition: Calling another class by creating an object and then using it. E.g. ClassA classA = new ClassA();
+	</p>
+	<h2>System.getProperties()</h2>
+	<p>It is used to get values at runtime by using <mark>-D</mark></p>
+	<p>
+	<pre class="pre-scrollable col-10 col-centered"><code>String defaultValue = "dev";
+static String env = System.getProperties("QA", defaultValue);</code></pre>
+	</p>
+	<p>static keyword is recommended for variables which fetch their values using System.getProperties() method. In
+		selenium its best practice to use static for reading config.properties file, because we use
+		System.getProperties() or custom configReader java class to read properties from config file (as shown in the
+		above code snippet).</p>
+	<h2>Java programs</h2>
+	<h5>Java Program to find repeated characters in a string:</h5>
+	<p>
+	<pre class="pre-scrollable col-10 col-centered"><code>public class RepeatedChars {
+public static void main(String[] args) {
+String input = "Welcome"; //Input String
+char[] chars = input.toCharArray(); //Split the word from String
+int wordCount = 1; //Variable for getting Repeated word count
+
+for (int i = 0; i &lt chars.length; i++) //Outer loop for Comparison
+{
+for (int j = i + 1; j &lt chars.length; j++) //Inner loop for Comparison
+{
+
+if (chars[i] == chars[j]) //Checking if both strings are equal
+{
+wordCount = wordCount + 1; //if equal increment the count
+chars[j] = 'a'; //Replace repeated words by zero
+}
+}
+if (chars[i] != 'a' && wordCount>1)
+System.out.println(chars[i] + "--" + wordCount); //Printing the word along with count
+wordCount = 1;
+}
+}
+}</code></pre>
+	</p>
+	<h5>Program to insertion sort an array in java:</h5>
+	<p>
+	<pre class="pre-scrollable col-10 col-centered"><code>int[] a = {5, 8, 1, 3, 9, 6};
+int i, j, key, temp;
+for (i = 1; i &lt a.length; i++)
+{
+// initially key will be the second element i.e. 8
+key = a[i];
+// initially j will be the first element index i.e. 1
+j = i - 1;
+while (j &gt= 0 && key &lt a[j]) {
+// if key is greater than the left side element then it will not go to the loop
+// or else it will enter the loop and compares with all the elements on its left
+// until it finds a left side element which is less than key
+// i=2,j=1, key= 1,a[j]=8, temp = 8
+temp = a[j];
+//a[j]= 1
+a[j] = a[j + 1];
+//a[j+1] = 8
+a[j + 1] = temp;
+j--;
+}
+}
+for (int x : a) {
+System.out.print(x + ", ");
+}</code>
+	</pre>
+	</p>
+	<h5>Program to insertion sort an ArrayList in java:</h5>
+	<p>
+	<pre class="pre-scrollable col-10 col-centered"><code>public class InsertionSortArrayList {
+public ArrayList&ltInteger> insertionSort(ArrayList&ltInteger> arrayList) {
+int i, j, key, temp;
+for (i = 1; i &lt arrayList.size(); i++) {
+key = arrayList.get(i);
+j = i - 1;
+while (j >= 0 && key &lt arrayList.get(j)) {
+temp = arrayList.get(j);
+arrayList.set(j, arrayList.get(j + 1));
+arrayList.set(j + 1, temp);
+j--;
+}
+}
+return arrayList;
+}
+
+public static void main(String args[]) {
+InsertionSortArrayList i = new InsertionSortArrayList();
+ArrayList&ltInteger> arrayList = new ArrayList&ltInteger>();
+arrayList.add(6);
+arrayList.add(8);
+arrayList.add(1);
+arrayList.add(4);
+arrayList.add(5);
+arrayList.add(3);
+arrayList.add(7);
+arrayList.add(2);
+i.insertionSort(arrayList);
+for (Integer a : arrayList) {
+System.out.print(a + ", ");
+}
+}
+}</code></pre>
+	</p>
+	<h5>Java merge sort:</h5>
+	<p>
+	<pre class="pre-scrollable col-10 col-centered"><code>class MergeSort {
+//sort method
+private static int[] sort(int[] array) {
+if (array.length &lt= 1) //base case of recursive method
+return array;
+int midpoint = array.length / 2;
+int[] left = new int[midpoint]; //declaring left side of the array
+int[] right = new int[array.length - midpoint]; //declaring right side of the array
+for (int i = 0; i &lt midpoint; i++)
+left[i] = array[i]; // loading left half of elements of the array to this new array
+for (int j = 0; j &lt right.length; j++)
+right[j] = array[midpoint + j]; // loading right half of elements of the array to this new array
+int[] mergedResult; //declare new array to hold sorted array elements
+left = sort(left); // recursive call to sort method
+right = sort(right);
+mergedResult = merge(left, right);
+return mergedResult;
+}
+
+//merge method
+private static int[] merge(int[] left, int[] right) { //it's going to merge left and right arrays
+int[] result = new int[left.length + right.length];
+int leftPointer, rightPointer, resultPointer; //these variables are indexes of left array, right array and
+result array.
+leftPointer = rightPointer = resultPointer = 0;
+while (leftPointer &lt left.length || rightPointer &lt right.length) { // while there are elements in either
+of the arrays
+if (leftPointer &lt left.length && rightPointer &lt right.length) { // if there are elements in both left
+and right arrays
+if (left[leftPointer] &lt right[rightPointer]) {
+result[resultPointer] = left[leftPointer];
+resultPointer++;
+leftPointer++;
+} else {
+result[resultPointer] = right[rightPointer]; // initial iteration : here adding 3 to result[0]
+resultPointer++;
+rightPointer++;
+}
+} else if (leftPointer &lt left.length) {
+//if all the right side elements are added to result then add remaining left elements to the result array
+// initial iteration: for example here after adding 3 to result it comes here and adds 4 to result[1]
+result[resultPointer] = left[leftPointer];
+resultPointer++;
+leftPointer++;
+} else if (rightPointer &lt right.length) {
+//if all the left side elements are added to the result then add remaining right elements to the result
+array
+result[resultPointer] = right[rightPointer];
+resultPointer++;
+rightPointer++;
+}
+}
+return result;
+}
+
+public static void main(String args[]) {
+int[] array = {4, 2, 3, 1};
+int[] sortedArray;
+sortedArray = sort(array);
+System.out.println("unsorted");
+for (int i : array)
+System.out.print(i + " ");
+System.out.println();
+System.out.println("sorted");
+for (int i : sortedArray)
+System.out.print(i + " ");
+}
+}</code></pre>
+	</p>
+	<h5>How to read config.properties file in java?</h5>
+	<p>
+	<pre class="pre-scrollable col-10 col-centered"><code>public synchronized static Properties config() {
+prop = new Properties();
+try {
+FileInputStream ip = new FileInputStream("./src/test/resources/config.properties");
+prop.load(ip);
+} catch (FileNotFoundException e) {
+e.printStackTrace();
+} catch (IOException e) {
+e.printStackTrace();
+}
+return prop;
+}</code></pre>
+	</p>
+</article>
+
+</html>

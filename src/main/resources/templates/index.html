@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout}">
+
+<head>
+	<!--utf-8 denotes the type of chars we are using on the website-->
+	<meta charset="UTF-8" />
+	<!--below description meta will be picked by SEO with maximum of 160 chars-->
+	<meta name="description"
+		content="Learn Automation Testing using frameworks like Selenium, Appium, Cucumber, TestNG and Page Object Model" />
+	<!--og:title meta is used to control how webpage is displayed when shared via social media-->
+	<meta name="og:title" property="og:title" content="Selenium Automation Testing | Learn Selenium and Appium" />
+	<!--viewport is to make website responsive-->
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<!--keywords is optional since google and major SEO doesnt use it-->
+	<meta name="keywords" content="selenium, java, testng, cucumber, automation testing, appium" />
+	<!--author meta is not related to SEO-->
+	<meta name="author" content="hari" />
+	<!--title tag is used by SEO, recommended to put under 70 characters-->
+	<title>Selenium Automation Testing | Learn Selenium and Appium</title>
+	<!-- Bootstrap core CSS -->
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.min.css}">
+	<!-- Custom styles for this template -->
+	<link th:rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<article layout:fragment="main-content">
+	<h1 class="cover-heading">Automation Testing Blog</h1>
+	<p class="lead">This blog provides short and straight to the point solutions to most of the Automation Testing
+		concepts that are in demand with current Industry leading companies in the market.</p>
+	<p class="lead">There are many technologies and frameworks to automate tests, here we focus on the most popular and widely used framework i.e. Selenium and Appium
+		with Java programming language.</p>
+	<p class="lead">Selenium combined with java is widely accepted combination by many Organizations.
+		Another advantage of using Selenium with Java is, we get huge community support from internet who guides and also
+		provide solutions to the problems that you encounter during automating the tests.</p>
+	<p class="lead">This blog provides solutions to Appium concepts too. Appium is a widely used mobile automation
+		testing framework. It can automate both iOS and Android devices. Similar to Selenium, Appium combined with Java also
+		has a huge community support in the internet.</p>
+	<p class="lead">Other topics covered by this blog include TestNG, Cucumber, Jenkins, Git, Jira, Page Object Model, Maven, Parallel Testing etc.</p>
+</article>
+
+</html>

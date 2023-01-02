@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout}">
+
+<head>
+	<!--utf-8 denotes the type of chars we are using on the website-->
+	<meta charset="UTF-8" />
+	<!--below description meta will be picked by SEO with maximum of 160 chars-->
+	<meta name="description" content="Different xpath techniques using or, and, startswith, contains, endswith, attributes, dynamic xpaths, pagefactory etc" />
+	<!--og:title meta is used to control how webpage is displayed when shared via social media-->
+	<meta name="og:title" property="og:title" content="Learn xpath techniques in Selenium and Appium | pagefactory" />
+	<!--viewport is to make website responsive-->
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<!--keywords is optional since google and major SEO doesnt use it-->
+	<meta name="keywords"
+		content="xpath, contains, or, and, startswith, endswith, dynamic" />
+	<!--author meta is not related to SEO-->
+	<meta name="author" content="hari" />
+	<!--title tag is used by SEO, recommended to put under 70 characters-->
+	<title>Learn xpath techniques in Selenium and Appium | pagefactory</title>
+	<!-- Bootstrap core CSS -->
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.min.css}">
+	<!-- Custom styles for this template -->
+	<link th:rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<article layout:fragment="main-content">
+	<h1>Xpath</h1>
+	<h2>Different xpath techniques</h2>
+	<p>1) Using dynamic attribute values:
+	<pre><code>String str="button";
+driver.findElement(By.xpath("//*[@label="+str+"]")));</code></pre>
+	</p>
+	<p>2) For example, if there are two buttons with label USD and to click on the USD button which is next to Amount
+		field, xpath can be written as below. Using this xpath we can click on USD button
+	<pre><code>//*[@text='Amount']/..//*[starts-with(text(),'USD')]</code></pre>
+	</p>
+	<p>3) Using or in xpath:
+	<pre><code>//*[contains(@name,"xyz") or contains(@label,"abc")]</code></pre>
+	</p>
+</article>
+
+</html>
